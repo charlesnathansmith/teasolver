@@ -48,7 +48,7 @@ If we have data from two such half rounds (a0 and a1, b0 and b1, etc..) then we 
 (key2 ^ a1) - (key2 ^ a0) = C
 ```
 
-If we were allowed to choose any values we wanted for a1 and a0, the maximum amount of bits of key2 would be recoverable when a1 = ~a2
+If we were allowed to choose any values we wanted for a1 and a0, the maximum amount of bits of key2 would be recoverable when a1 = ~a2.
 Say, for example, a1 = 0 and a0 = 0xffffffff, then the problem would reduce to
 
 ```
