@@ -59,7 +59,9 @@ Labeling each bit of C as C[n] and of key2 as key2[n], where n = 0 is the least-
 
 ```
 C[0] = key2[0] ^ ~key2[0] = 1
-C[1] = key2[1] ^ ~key2[1] ^ ~key2[0] (the borrow from the bit 0 subtraction) = 1 ^ ~key2[0] = key2[0]
+The borrow carried is ~(key2[0]) & ~key2[0] = ~key2[0]
+
+C[1] = key2[1] ^ ~key2[1] ^ ~key2[0] = 1 ^ ~key2[0] = key2[0]
 ...
 C[n] = key2[n-1]
 
@@ -76,7 +78,7 @@ key2 = (C >> 1) & 0x8000000
 ```
 We could easily recover all but the most-significant bit.
 
-In reality, we do not get to control what a0 and a1 are, but if we can find pairs of a values that differ by a single bit, and find a pair like that for each bit's place, then we can use a similar method to solve for key2 bit by bit.
+In reality, we do not get to control what a0 and a1 are, but if we can find pairs of 'a' values that differ in a certain bit's places, find pairs like that for each bit's place, then we can use a similar method to solve for key2 bit by bit.
 
 Say we find entries in our data set where a0 and a1 differ at bit n, and we'll call the value of a with 0 in that bit's place a0, so that a0[n] = 0 and a1[n] = 1, then
 
